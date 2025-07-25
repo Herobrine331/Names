@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personality Test/title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background: #f9f9f9;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 22px;
+      color: #333;
+    }
+    .adjective {
+      margin: 8px 0;
+    }
+    .header {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>What's Your Name's Personality?</h1>
+  <p>Enter your name and see the traits it holds:</p>
+  <input type="text" id="nameInput" placeholder="Enter your name" />
+  <button onclick="generatePersonality()">Reveal</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    const adjectives = {
+      a: "Ambitious",
+      b: "Brave",
+      c: "Creative",
+      d: "Determined",
+      e: "Empathetic",
+      f: "Funny",
+      g: "Generous",
+      h: "Honest",
+      i: "Intelligent",
+      j: "Joyful",
+      k: "Kind",
+      l: "Loyal",
+      m: "Motivated",
+      n: "Nurturing",
+      o: "Optimistic",
+      p: "Passionate",
+      q: "Quick-thinking",
+      r: "Respectful",
+      s: "Strong",
+      t: "Thoughtful",
+      u: "Understanding",
+      v: "Vibrant",
+      w: "Wise",
+      x: "Xenial",
+      y: "Youthful",
+      z: "Zealous"
+    };
+
+    function generatePersonality() {
+      const name = document.getElementById("nameInput").value.trim().toLowerCase();
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "";
+
+      if (!name) {
+        resultDiv.innerHTML = "<p>Please enter a name.</p>";
+        return;
+      }
+
+      let output = '<div class="header">These words describe you:</div>';
+
+      for (let char of name) {
+        const trait = adjectives[char];
+        if (trait) {
+          output += `<div class="adjective">${trait}</div>`;
+        }
+      }
+
+      resultDiv.innerHTML = output;
+    }
+  </script>
+
+</body>
+</html>
